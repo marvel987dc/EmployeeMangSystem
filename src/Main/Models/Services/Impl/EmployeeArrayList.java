@@ -59,19 +59,39 @@ public class EmployeeArrayList implements EmpInterface {
            System.out.println("Employee not found.");
            return;
        }
-       double taxRate = getTaxRate(emp.getSalary());
-       double taxAmount = emp.getSalary() * taxRate;
+       double taxRate = getTaxRate(emp.getProvince());
+       double taxAmount = emp.getSalary() * taxRate / 100;
        double netSalary = emp.getSalary() - taxAmount;
 
         System.out.println("-------Salary Slip-------");
-        System.out.println("");
-    }
-
-    private double getTaxRate(double salary) {
+        System.out.println("Employee: " + emp.getName());
+        System.out.println("Gross Salary: " + emp.getSalary());
+        System.out.println("Tax Rate: " + emp.getProvince() + " - " + taxRate + "%");
+        System.out.println("TaxDeducted: " + taxAmount);
+        System.out.println("Net Salary: " + netSalary);
     }
 
     @Override
     public boolean updateSalary(String employeeID, double newSalary) {
-        return false;
+        Employee emp = searchEmployees(employeeID);
+        if(emp != null){
+            emp.setSalary(newSalary);
+            System.out.println("Salary has been updated ");
+            return true;
+        } else {
+            System.out.println("Employee was not found");
+            return false;
+        }
     }
-}
+
+    private double getTaxRate(String province) {
+        return switch (province.toLowerCase()) {
+            case "ontario" -> 13.0;
+            case "quebec" -> 15.0;
+            case "british columbia" -> 12.0;
+            case "alberta" -> 10.0;
+            default -> 10.0;
+        };
+    }
+    }
+
