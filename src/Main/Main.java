@@ -48,8 +48,44 @@ public class Main {
                     employee.removeEmployee(identifier);
                     break;
 
-            }
+                case 3:
+                    System.out.print("Enter Email, Contact, or Name to Search: ");
+                    String searchKey = scanner.nextLine();
+                    Employee foundEmployee = employee.searchEmployees(searchKey);
+                    if (foundEmployee != null) {
+                        System.out.println("Employee Found: " + foundEmployee.getName());
+                    } else {
+                        System.out.println("Employee Not Found.");
+                    }
+                    break;
 
+                case 4:
+                    employee.displayAllEmployees();
+                    break;
+
+                case 5:
+                    System.out.println("Enter email or contact for salary Slip: ");
+                    String SalaryEmployee = scanner.nextLine();
+                    employee.generateSalarySLip(SalaryEmployee);
+                    break;
+
+                case 6:
+                    System.out.println("Enter Email or contact to update the salary: ");
+                    String UpdateSalary = scanner.nextLine();
+                    System.out.println("Enter the new salary to update: ");
+                    double newSalary = scanner.nextDouble();
+                    employee.updateSalary(UpdateSalary, newSalary);
+                    break;
+
+                case 7:
+                    System.out.println("Thank you for using our system...Bye....");
+                    scanner.close();
+                    System.exit(0);
+                    break;
+
+                default:
+                    System.out.println("Invalid Choice. Please Try Again.");
+            }
         }
     }
 }

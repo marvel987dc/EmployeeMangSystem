@@ -65,7 +65,7 @@ public class Employee {
 
     public void display(){
         System.out.println("Name: " + name + ", Email: " + email + ", Contact: " + contact +
-                ", Address: " + address + ", Salary: " + salary + ", province" + province);
+                ", Address: " + address + ", Salary: " + salary + ", province: " + province);
     }
 
 }
