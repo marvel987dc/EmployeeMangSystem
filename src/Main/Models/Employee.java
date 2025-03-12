@@ -17,6 +17,7 @@ public class Employee {
         this.salary = salary;
         this.province = province;
     }
+
     //getters and setters to access and modify the values attributes.
     public String getName() {
         return name;
@@ -66,6 +67,7 @@ public class Employee {
         System.out.println("Name: " + name + ", Email: " + email + ", Contact: " + contact +
                 ", Address: " + address + ", Salary: " + salary + ", province" + province);
     }
+
 }
 
 
